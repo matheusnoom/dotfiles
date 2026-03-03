@@ -15,6 +15,7 @@ STOW_MODULES=(
   kitty
   starship
   tmux
+  vscode
   zsh
 )
 
