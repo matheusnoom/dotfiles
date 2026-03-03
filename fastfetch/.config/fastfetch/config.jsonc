@@ -1,0 +1,133 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+  // ── CORES ── para trocar, edite os hex aqui e nos keyColor abaixo ──────────
+  //   bordas Software  = #782634
+  //   bordas Hardware  = #6E728F
+  //   keys  Software   = #782634  (todos os keyColor do bloco Software)
+  //   keys  Hardware   = #6E728F  (todos os keyColor do bloco Hardware)
+  // ──────────────────────────────────────────────────────────────────────────
+
+  "logo": {
+    "type": "kitty",
+    "source": "~/.config/fastfetch/image.png",
+    "position": "top",
+    // terminal: 120c × 65l — imagem 80c → left=(120-80)/2=20
+    "width": 80,
+    "height": 12,
+    "padding": {
+      "top": 1,
+      "left": 20
+    }
+  },
+
+  "display": {
+    "separator": " "
+  },
+
+  // centralização — terminal 120c, key+sep=2c
+  // bordas (59c): (120-59)/2=30 → printf %28s (30-2)
+  // welcome (15c): (120-15)/2=52 → printf %50s (52-2)
+  // keys das linhas: 30 espaços prefixados no campo key
+
+  "modules": [
+    // respiro após a imagem
+    { "type": "custom", "format": "" },
+    { "type": "custom", "format": "" },
+
+    // boas-vindas
+    {
+      "type": "command",
+      "key": " ",
+      "text": "printf '%50sWelcome Home...'"
+    },
+
+    { "type": "custom", "format": "" },
+
+    // ── Software ─────────────────────────────────────────────────────────────
+    {
+      "type": "custom",
+      "key": "                            ┌────────────────────────Software─────────────────────────┐",
+      "keyColor": "#782634",
+      "format": ""
+    },
+    {
+      "type": "os",
+      "key": "                            │ ├  Distro",
+      "keyColor": "#782634"
+    },
+    {
+      "type": "kernel",
+      "key": "                            │ ├  Kernel",
+      "keyColor": "#782634"
+    },
+    {
+      "type": "command",
+      "key": "                            │ ├  Python",
+      "keyColor": "#782634",
+      "text": "python3 --version 2>/dev/null | cut -d' ' -f2 || echo 'N/A'"
+    },
+    {
+      "type": "command",
+      "key": "                            │ ├  Go    ",
+      "keyColor": "#782634",
+      "text": "go version 2>/dev/null | awk '{print $3}' | sed 's/go//;s/:.*//' || echo 'N/A'"
+    },
+    {
+      "type": "command",
+      "key": "                            │ ├  Java  ",
+      "keyColor": "#782634",
+      "text": "java --version 2>/dev/null | head -1 | awk '{print $2}' || echo 'N/A'"
+    },
+    {
+      "type": "terminal",
+      "key": "                            └ └  Term  ",
+      "keyColor": "#782634"
+    },
+    {
+      "type": "custom",
+      "key": "                            └─────────────────────────────────────────────────────────┘",
+      "keyColor": "#782634",
+      "format": ""
+    },
+
+    { "type": "custom", "format": "" },
+
+    // ── Hardware ─────────────────────────────────────────────────────────────
+    {
+      "type": "custom",
+      "key": "                            ┌────────────────────────Hardware─────────────────────────┐",
+      "keyColor": "#6E728F",
+      "format": ""
+    },
+    {
+      "type": "cpu",
+      "key": "                            │ ├  CPU   ",
+      "keyColor": "#6E728F",
+      "format": "{name}"
+    },
+    {
+      "type": "memory",
+      "key": "                            │ ├  RAM   ",
+      "keyColor": "#6E728F"
+    },
+    {
+      "type": "disk",
+      "key": "                            │ ├  Disk  ",
+      "keyColor": "#6E728F"
+    },
+    {
+      "type": "uptime",
+      "key": "                            └ └  Uptime",
+      "keyColor": "#6E728F"
+    },
+    {
+      "type": "custom",
+      "key": "                            └─────────────────────────────────────────────────────────┘",
+      "keyColor": "#6E728F",
+      "format": ""
+    },
+
+    { "type": "custom", "format": "" }
+  ]
+}

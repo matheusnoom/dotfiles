@@ -1,0 +1,58 @@
+# paleta ativa: "grey" — prompt monocromático, independente do tema do terminal
+# estilos aceitam: hex direto (#rrggbb), nome da paleta, ou ANSI (se ausente na paleta)
+# referência: https://starship.rs/config/#style-strings
+palette = "grey"
+
+# usuário → host → diretório → fill → [contexto](cinza) → hora → quebra → cursor
+format = """$username$hostname$directory$fill[$all](grey)$time$line_break$character"""
+
+# cursor
+# "green" e "red" resolvem pela paleta abaixo → ficam cinza (flat/mono)
+# para usar as cores reais do terminal: remova green/red de [palettes.grey]
+[character]
+success_symbol = "[@](bold green)"
+error_symbol   = "[@](bold red)"
+
+[fill]
+symbol = ' '
+style = '#222222'
+
+# aparece apenas acima de 10 s
+[cmd_duration]
+min_time = 10000
+
+[time]
+disabled = false
+time_format = "%F %T"
+style = "#444444"
+format = '[$time]($style)'
+
+# módulos — só ajuste de símbolo/estilo
+[directory]
+truncation_length = 0
+truncate_to_repo  = false
+
+[python]
+symbol = "py "
+
+[package]
+symbol = "package "
+style = "#777777"
+
+[git_branch]
+symbol = "git "
+
+[aws]
+symbol = "aws "
+
+[terraform]
+symbol = "tf "
+style = "bold #777777"
+
+# paleta
+# nomes usados: grey ([$all] no format), green e red ([character])
+# remova green/red para usar ANSI color2/color1 do terminal (pywal/kitty)
+[palettes.grey]
+grey  = "#777777"
+green = "#777777"
+red   = "#777777"
