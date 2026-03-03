@@ -14,6 +14,7 @@ STOW_MODULES=(
   fastfetch
   kitty
   starship
+  vscode
   zsh
 )
 
@@ -124,6 +125,19 @@ if [[ "$SHELL" == "$ZSH_PATH" ]]; then
 else
   chsh -s "$ZSH_PATH"
   ok "Shell alterado para zsh (effect na próxima sessão)"
+fi
+
+step "Instalando extensões do VS Code"
+EXT_FILE="$DOTFILES_DIR/vscode/extensions.txt"
+if command -v code &>/dev/null && [[ -f "$EXT_FILE" ]]; then
+  while IFS= read -r ext || [[ -n "$ext" ]]; do
+    [[ -z "$ext" || "$ext" == \#* ]] && continue
+    code --install-extension "$ext" --force
+    info "$ext"
+  done < "$EXT_FILE"
+  ok "Extensões instaladas"
+else
+  info "Pulando: 'code' não encontrado ou extensions.txt ausente"
 fi
 
 echo -e "\n${BOLD}${GREEN}Setup concluído! Reinicie o terminal ou abra uma nova sessão.${RESET}\n"
