@@ -47,6 +47,9 @@
     "github.copilot.nextEditSuggestions.enabled": true,
     "chat.viewSessions.orientation": "stacked",
     //Others
+    "files.exclude": {
+        "**/.git": false
+    },
     "update.showReleaseNotes": false,
     "telemetry.telemetryLevel": "off",
     "workbench.settings.applyToAllProfiles": [
@@ -92,6 +95,7 @@
         "github.copilot.nextEditSuggestions.enabled",
         "chat.viewSessions.orientation",
         //Others
+        "files.exclude",
         "update.showReleaseNotes",
         "telemetry.telemetryLevel"
     ],

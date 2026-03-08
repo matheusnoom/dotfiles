@@ -36,8 +36,16 @@ Os scripts instalam os pacotes e rodam `stow` em cada módulo automaticamente.
 | `starship/`  | starship.toml                                         |
 | `tmux/`      | tmux.conf                                             |
 | `fastfetch/` | config.jsonc + imagem de logo                         |
+| `vscode/`    | settings.json (Default) + profiles nomeados           |
 
 > Para adicionar um novo módulo: crie uma pasta com a estrutura espelhando `$HOME` e rode `stow <pasta>`.
+
+---
+
+## VSCode — Profiles
+
+Os profiles do VSCode usam IDs gerados que não são versionáveis diretamente com stow.
+Veja o fluxo completo em [docs/vscode-profiles.md](docs/vscode-profiles.md).
 
 ---
 
