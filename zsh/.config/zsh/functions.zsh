@@ -17,12 +17,12 @@ cleanup() {
     skip() { echo -e "  --: $1 (nada encontrado)"; }
 
     step "Verificando dependencias orfas (pacman)"
-    ORPHANS=$(pacman -Qtdq 2>/dev/null || true)
+    ORPHANS=($(pacman -Qtdq 2>/dev/null))
 
-    if [[ -n "$ORPHANS" ]]; then
+    if (( ${#ORPHANS[@]} > 0 )); then
       echo -e "${RED}  Orfaos encontrados:${RESET}"
-      echo "$ORPHANS" | sed 's/^/    - /'
-      sudo pacman -Rns $ORPHANS --noconfirm
+      printf '    - %s\n' "${ORPHANS[@]}"
+      sudo pacman -Rns "${ORPHANS[@]}" --noconfirm
       ok "Orfaos removidos"
     else
       skip "Sem orfaos"
