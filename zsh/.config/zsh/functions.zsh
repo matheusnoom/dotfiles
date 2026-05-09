@@ -17,7 +17,7 @@ cleanup() {
     skip() { echo -e "  --: $1 (nada encontrado)"; }
 
     step "Verificando dependencias orfas (pacman)"
-    ORPHANS=($(pacman -Qtdq 2>/dev/null))
+    ORPHANS=($(pacman -Qtdq 2>/dev/null || true))
 
     if (( ${#ORPHANS[@]} > 0 )); then
       echo -e "${RED}  Orfaos encontrados:${RESET}"
